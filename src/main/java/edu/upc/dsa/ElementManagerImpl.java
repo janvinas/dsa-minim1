@@ -36,7 +36,6 @@ public class ElementManagerImpl implements ElementManager {
     @Override
     public User addUser(String name, String surname, String email, String birthday) {
         User u = new User(name, surname, email, birthday);
-        logger.info("Added user " + u.getId());
         return addUser(u);
     }
 
@@ -114,5 +113,11 @@ public class ElementManagerImpl implements ElementManager {
         }
         logger.info("Elements of type " + type + ": " + filteredElements);
         return filteredElements;
+    }
+
+    @Override
+    public void clear(){
+        users.clear();
+        elements.clear();
     }
 }

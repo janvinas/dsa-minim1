@@ -18,9 +18,9 @@ public interface ElementManager {
     MapElement getElement(int horizontal, int vertical) throws ElementNotFoundException;
     MapElement addElement(MapElement e);
     MapElement addElement(ElementType type, int horizontal, int vertical);
-    void visitElement(String userId, int horizontal, int vertical) throws ElementNotFoundException;
+    void visitElement(String userId, int horizontal, int vertical) throws ElementNotFoundException, UserNotFoundException;
     TreeMap<LocalDateTime, MapElement> getVisitedElements(String userId) throws UserNotFoundException;
     TreeMap<LocalDateTime, User> getSeenUsers(int vertical, int horizontal) throws ElementNotFoundException;
     ArrayList<MapElement> getElements(ElementType type);
-
+    void clear();
 }
