@@ -170,7 +170,7 @@ public class ElementsService {
             @ApiResponse(code = 500, message = "Internal error")
     })
     @Path("/elements/{type}")
-    public Response getUsers(@PathParam("type") ElementType type) {
+    public Response getMapElements(@PathParam("type") ElementType type) {
         if(type == null) return Response.status(400).build();
         GenericEntity<ArrayList<MapElement>> entity = new GenericEntity<ArrayList<MapElement>>(em.getElements(type)) {};
         return Response.status(200).entity(entity).build();
