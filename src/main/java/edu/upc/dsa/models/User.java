@@ -1,16 +1,20 @@
 package edu.upc.dsa.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import edu.upc.dsa.util.RandomUtils;
 
+import javax.xml.bind.annotation.XmlTransient;
 import java.time.LocalDateTime;
 import java.util.TreeMap;
 
-public class User {
+public class User implements Comparable<User> {
+    @JsonIgnore
     String id;
     String name;
     String surname;
     String email;
     String birthday;
+    @JsonIgnore
     TreeMap<LocalDateTime, MapElement> visitedElements;
 
     public User(){
@@ -77,5 +81,10 @@ public class User {
     @Override
     public String toString() {
         return "User{id=" + id + ", name=" + name + "}";
+    }
+
+    @Override public int compareTo(User o) {
+        return (this.surname + this.name).compareToIgnoreCase((o.surname + o.name));
+
     }
 }

@@ -7,17 +7,16 @@ import edu.upc.dsa.models.MapElement;
 import edu.upc.dsa.models.User;
 import org.apache.log4j.Logger;
 
-import javax.lang.model.element.Element;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Map;
 import java.util.TreeMap;
+import java.util.TreeSet;
 
 public class ElementManagerImpl implements ElementManager {
     private static final ElementManager instance = new ElementManagerImpl();
     final static Logger logger = Logger.getLogger(ElementManagerImpl.class);
 
-    private ArrayList<User> users = new ArrayList<>();
+    private TreeSet<User> users = new TreeSet<>();
     private ArrayList<MapElement> elements = new ArrayList<>();
 
     private ElementManagerImpl() {}
@@ -40,7 +39,8 @@ public class ElementManagerImpl implements ElementManager {
     }
 
     @Override
-    public ArrayList<User> listUsers() {
+    public TreeSet<User> listUsers() {
+
         logger.info(users);
         return users;
     }

@@ -1,15 +1,18 @@
 package edu.upc.dsa.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import edu.upc.dsa.util.RandomUtils;
 
 import java.time.LocalDateTime;
 import java.util.TreeMap;
 
 public class MapElement {
+    @JsonIgnore
     String id;
     ElementType type;
     int horizontal;
     int vertical;
+    @JsonIgnore
     TreeMap<LocalDateTime, User> usersSeen;
 
     public MapElement(){

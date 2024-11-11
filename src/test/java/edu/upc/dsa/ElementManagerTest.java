@@ -1,6 +1,7 @@
 package edu.upc.dsa;
 
 import edu.upc.dsa.exceptions.ElementNotFoundException;
+import edu.upc.dsa.exceptions.UserNotFoundException;
 import edu.upc.dsa.models.ElementType;
 import edu.upc.dsa.models.MapElement;
 import edu.upc.dsa.models.User;
@@ -27,6 +28,21 @@ public class ElementManagerTest {
     public void tearDown(){
         em.clear();
         em = null;
+    }
+
+    @Test
+    public void getUserTest(){
+        em.getUser(testUser.getId());
+        Assert.assertThrows(UserNotFoundException.class, () -> em.getUser("Hola soc una id no vàlida jejeje"));
+    }
+
+    @Test
+    public void addUserTest(){
+        User testUser2 = em.addUser("Aitor", "Tilla", "haytortilla@gmail.com", "4/8/2001");
+        em.getUser(testUser2.getId());
+        // l'ordre hauria de ser alfabètic per cognom
+        Assert.assertEquals("Tilla", em.listUsers().first().getSurname());
+        Assert.assertEquals("Viñas", em.listUsers().last().getSurname());
     }
 
     @Test

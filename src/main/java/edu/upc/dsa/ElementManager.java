@@ -9,12 +9,13 @@ import edu.upc.dsa.models.User;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.TreeMap;
+import java.util.TreeSet;
 
 public interface ElementManager {
     User addUser(User u);
     User addUser(String name, String surname, String email, String birthday);
-    ArrayList<User> listUsers();
-    User getUser(String id);
+    TreeSet<User> listUsers();
+    User getUser(String id) throws UserNotFoundException;
     MapElement getElement(int horizontal, int vertical) throws ElementNotFoundException;
     MapElement addElement(MapElement e);
     MapElement addElement(ElementType type, int horizontal, int vertical);
